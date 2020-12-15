@@ -11,12 +11,11 @@ from torchvision import models
 from PIL import Image
 
 
-directory_hyou = './proposed_image/'
-#directory_result ='./proposed_result/'
-directory_result = './MUNIT_user_2/'
+directory_hyou = './compared_image/'
+directory_result = './FUNIT_result_2/'
 
 for num in range(40):
-    img_hyou = Image.open(directory_hyou + "proposed_" + str(num).zfill(2) + ".png")
+    img_hyou = Image.open(directory_hyou + "compared_" + str(num).zfill(2) + ".png")
     img_result = Image.open(directory_result + str(num).zfill(2) + ".png")
     img = Image.new("RGB", (1200, 800), (255, 255, 255))
     
@@ -24,7 +23,7 @@ for num in range(40):
     img.paste(img_hyou, (0, 0), img_hyou.split()[3])
     img_result = img_result.resize((500, 750))
     img.paste(img_result, (700, 0))
-    img.save("./test/{}".format(str(num).zfill(2) + ".png"))
+    img.save("./FUNIT_user/{}".format(str(num).zfill(2) + ".png"))
 
 
 """
