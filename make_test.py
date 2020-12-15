@@ -19,9 +19,11 @@ for num in range(40):
     img_hyou = Image.open(directory_hyou + "proposed_" + str(num).zfill(2) + ".png")
     img_result = Image.open(directory_result + str(num).zfill(2) + ".png")
     img = Image.new("RGB", (1200, 800), (255, 255, 255))
+    
+    img_hyou = img_hyou.resize((int(0.9 * img_hyou.width), int(0.9 * img_hyou.height)))
     img.paste(img_hyou, (0, 0), img_hyou.split()[3])
-    img_result = img_result.resize((420, 630))
-    img.paste(img_result, (770, 100))
+    img_result = img_result.resize((500, 750))
+    img.paste(img_result, (700, 0))
     img.save("./test/{}".format(str(num).zfill(2) + ".png"))
 
 
