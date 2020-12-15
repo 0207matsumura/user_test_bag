@@ -11,14 +11,19 @@ from torchvision import models
 from PIL import Image
 
 
-directory = './FUNIT/'
-image_list = os.listdir(directory)
+directory_hyou = './proposed_image/'
+directory_result ='./proposed_result/'
+
+for num in range(40):
+    img_hyou = Image.open(directory_hyou + "proposed_" + str(num).zfill(2) + ".png")
+    img_result = Image.open(directory_result + str(num).zfill(2) + ".png")
+    img = Image.new("RGB", (1200, 800), (255, 255, 255))
+    img.paste(img_hyou, (0, 0), img_hyou.split()[3])
+    img.paste(img_result, (800, 200))
+    img.save("./test/{}".format(str(num).zfill(2) + ".png"))
 
 
-for image in image_list:
-    url = directory + image
-    img = Image.open(url)
-    #print(img.width)
-    #print(img.height)
-    img = img.resize((int(1.5*img.width), int(1.5 *img.height)) )
-    img.save("FUNIT_test/{}".format(image))
+"""
+758,777
+384,256
+"""
